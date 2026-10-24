@@ -13,6 +13,7 @@ import { PRODUCTS } from '../data/seedData';
 export const INTRO_CONFIG = {
   // Brand Identity
   brandName: "KUMAR CARDS",
+  subheading: "Manufacturers of fancy wedding shagun ke lifafe",
   offeringsLine1: "Wedding Lifafe · Invitation Cards · Designer Cards",
   offeringsLine2: "All Types of Printing Jobs",
   tagline: "Beautiful Designs for Every Special Occasion.",

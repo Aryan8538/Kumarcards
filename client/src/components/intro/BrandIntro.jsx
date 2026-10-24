@@ -239,13 +239,13 @@ export default function BrandIntro({ onComplete, isForced = false }) {
               className="absolute left-[4%] right-[4%] z-20 transition-all duration-[1400ms] cubic-bezier(0.22, 1, 0.36, 1) flex flex-col items-center justify-between text-center"
               style={{
                 top: '12px',
-                height: '250px',
+                height: '265px',
                 transform: isCardRisen
-                  ? 'translateY(-155px)'
+                  ? 'translateY(-170px)'
                   : 'translateY(15px)',
                 background: 'linear-gradient(145deg, #FAF7EE 0%, #F4ECE0 50%, #ECE1D0 100%)',
                 borderRadius: '16px',
-                padding: '14px 16px',
+                padding: '12px 14px',
                 boxShadow: isCardRisen
                   ? '0 -15px 35px rgba(0,0,0,0.5), 0 0 25px rgba(212, 175, 55, 0.25)'
                   : 'none',
@@ -308,8 +308,13 @@ export default function BrandIntro({ onComplete, isForced = false }) {
                   {INTRO_CONFIG.brandName}
                 </h1>
 
+                {/* Subheading under KUMAR CARDS */}
+                <p className="font-serif italic text-[10px] sm:text-[11px] md:text-xs font-semibold text-crimson-800 tracking-wide mt-0.5 leading-snug">
+                  {INTRO_CONFIG.subheading}
+                </p>
+
                 {/* Golden Center Flourish Divider */}
-                <div className="flex items-center justify-center gap-2 w-32 sm:w-40 my-1">
+                <div className="flex items-center justify-center gap-2 w-32 sm:w-44 my-1">
                   <span className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-gold-600/60 to-transparent" />
                   <span className="w-1.5 h-1.5 rotate-45 bg-gold-600" />
                   <span className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-gold-600/60 to-transparent" />
