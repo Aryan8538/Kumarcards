@@ -4,7 +4,7 @@ import { ArrowRight, MessageCircle, Sparkles, Flame } from 'lucide-react';
 import { BUSINESS_CONFIG } from '../../config/business';
 import { PRODUCTS } from '../../data/seedData';
 
-export default function HeroBanner() {
+export default function HeroBanner({ onReplayIntro }) {
   const bestSellersCount = PRODUCTS.filter((p) => p.isBestSeller).length;
 
   return (
@@ -36,6 +36,17 @@ export default function HeroBanner() {
                 <Flame className="w-3.5 h-3.5 fill-current text-white" />
                 <span>{bestSellersCount} Best Sellers Available</span>
               </a>
+              {onReplayIntro && (
+                <button
+                  type="button"
+                  onClick={onReplayIntro}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-crimson-900/90 hover:bg-crimson-800 text-gold-200 border border-gold-400/50 shadow-sm text-xs font-semibold transition-all cursor-pointer hover:shadow-gold-glow"
+                  title="Watch Brand Intro"
+                >
+                  <Sparkles className="w-3.5 h-3.5 text-gold-400" />
+                  <span>Watch Brand Intro</span>
+                </button>
+              )}
             </div>
 
             {/* Main Headline */}

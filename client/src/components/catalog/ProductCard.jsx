@@ -11,27 +11,29 @@ export default function ProductCard({ product }) {
     <div className="group bg-white rounded-xl sm:rounded-2xl border border-cream-200/90 shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col overflow-hidden relative">
       
       {/* Top Image Container */}
-      <Link
-        to={`/product/${product.slug}`}
-        className="block relative aspect-[4/3] sm:aspect-[4/3] overflow-hidden bg-cream-100/80 p-2.5 flex items-center justify-center"
-      >
-        <img
-          src={product.thumbnail || product.images[0]}
-          alt={product.name}
-          loading="lazy"
-          className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 ease-out"
-        />
+      <div className="relative aspect-[4/3] sm:aspect-[4/3] overflow-hidden bg-cream-100/80 p-2.5 flex items-center justify-center">
+        <Link
+          to={`/product/${product.slug}`}
+          className="w-full h-full flex items-center justify-center"
+        >
+          <img
+            src={product.thumbnail || product.images[0]}
+            alt={product.name}
+            loading="lazy"
+            className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 ease-out"
+          />
+        </Link>
 
         {/* Ribbon Badge: Best Seller takes priority with Flame icon, or Featured */}
         {product.isBestSeller ? (
-          <div className="absolute top-2.5 left-2.5 z-10">
+          <div className="absolute top-2.5 left-2.5 z-10 pointer-events-none">
             <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-extrabold tracking-wider uppercase bg-gradient-to-r from-amber-500 to-amber-600 text-white shadow-md border border-amber-300/50">
               <Flame className="w-2.5 h-2.5 fill-current text-amber-100" />
               <span>Best Seller</span>
             </span>
           </div>
         ) : product.isFeatured ? (
-          <div className="absolute top-2.5 left-2.5 z-10">
+          <div className="absolute top-2.5 left-2.5 z-10 pointer-events-none">
             <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase bg-crimson-800 text-gold-300 shadow-sm border border-gold-400/30">
               <Sparkles className="w-2.5 h-2.5" />
               <span>Featured</span>
@@ -40,7 +42,7 @@ export default function ProductCard({ product }) {
         ) : null}
 
         {/* SKU Badge */}
-        <div className="absolute bottom-2.5 left-2.5 z-10">
+        <div className="absolute bottom-2.5 left-2.5 z-10 pointer-events-none">
           <Badge variant="sku">
             {product.id}
           </Badge>
@@ -51,14 +53,13 @@ export default function ProductCard({ product }) {
           href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
-          onClick={(e) => e.stopPropagation()}
           className="absolute bottom-2.5 right-2.5 z-10 w-8 h-8 rounded-full bg-whatsapp/90 hover:bg-whatsapp text-white flex items-center justify-center shadow-md transition-transform active:scale-90"
           title={`Inquire about ${product.id} on WhatsApp`}
           aria-label={`Inquire about ${product.name} on WhatsApp`}
         >
           <MessageCircle className="w-4 h-4 fill-current" />
         </a>
-      </Link>
+      </div>
 
       {/* Card Body */}
       <div className="p-3.5 sm:p-4 flex-1 flex flex-col justify-between">
