@@ -170,16 +170,22 @@ export default function ProductDetailPage() {
                   <div className="text-2xl sm:text-3xl font-extrabold text-crimson-800 mt-0.5 flex items-baseline gap-2">
                     ₹{product.priceMin === product.priceMax ? product.priceMin : `${product.priceMin} – ₹${product.priceMax}`}
                     <span className="text-xs sm:text-sm font-medium text-ink-600">
-                      / 1 packet
+                      / {product.priceUnit === 'pack of 10' ? '1 packet' : (product.priceUnit || 'piece')}
                     </span>
                   </div>
-                  <p className="text-xs text-ink-500 mt-1 font-medium">
-                    📦 1 Packet contains <strong className="text-ink-800 font-semibold">10 pieces</strong> (₹{(product.priceMin / 10).toFixed(0)} / piece)
-                  </p>
+                  {product.packageDetails ? (
+                    <p className="text-xs text-ink-500 mt-1 font-medium">
+                      📦 1 Packet contains <strong className="text-ink-800 font-semibold">10 pieces</strong> (₹{(product.priceMin / 10).toFixed(0)} / piece)
+                    </p>
+                  ) : (
+                    <p className="text-xs text-ink-500 mt-1 font-medium">
+                      ✨ Variable price based on quantity, paper thickness, gold foil & printing options
+                    </p>
+                  )}
                 </div>
                 <div className="text-right">
                   <span className="text-xs font-semibold text-gold-800 bg-gold-50 border border-gold-300 px-3 py-1.5 rounded-full inline-flex items-center gap-1">
-                    Pack of 10 Pieces
+                    {product.packageDetails ? 'Pack of 10 Pieces' : 'Custom Printing Available'}
                   </span>
                 </div>
               </div>

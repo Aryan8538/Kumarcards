@@ -30,14 +30,14 @@ export default function ProductSpecs({ product }) {
       icon: Palette
     },
     {
-      label: 'Packaging & Pack Size',
-      value: product.packageDetails || '1 Packet (10 Pieces)',
+      label: product.packageDetails ? 'Packaging & Pack Size' : 'Card Format & Suite',
+      value: product.packageDetails || 'Invitation Suite (Card + Outer Cover + Matching Inserts)',
       icon: PackageCheck,
       highlight: true
     },
     {
       label: 'Minimum Order Quantity',
-      value: '1 Packet (10 pieces)',
+      value: product.packageDetails ? '1 Packet (10 pieces)' : `${product.minimumOrderQuantity || 50} pieces`,
       icon: PackageCheck
     }
   ];

@@ -26,13 +26,45 @@ export const CATEGORIES = [
     name: "Wedding Cards",
     slug: "wedding-cards",
     description: "Bespoke wedding invitation cards, laser cut cards, luxury suites, and royal marriage stationery.",
-    image: "/images/lifafe/royal-shahi-chhatri-umbrellas-lifafa.jpg",
-    productCount: 0,
+    image: "/images/wedding-cards/royal-jharokha-palace-swans-wedding-card-cover.jpg",
+    productCount: 1,
     isActive: true
   }
 ];
 
 export const PRODUCTS = [
+  {
+    id: "WC-001",
+    name: "Royal Jharokha Palace & Twin Swans Bespoke Wedding Invitation Card",
+    slug: "royal-jharokha-palace-twin-swans-wedding-invitation-card-wc001",
+    productType: "Wedding Card",
+    categoryId: "wedding-cards",
+    description: "Exquisite traditional Indian wedding invitation card featuring an architectural Mughal-Rajputana jharokha arch embellished with 3D embossed white floral garlands and gleaming gold foil borders. The cover depicts an elegant royal couple adorned in traditional wedding attire by a serene lotus lake with a pair of swimming swans (symbolizing marital devotion and harmony), set against an ethereal marble palace and textured rose-gold woven jaali backdrop.\n\nInside, the card unfolds to reveal a majestic golden horse-drawn ceremonial carriage (Shahi Baggi) procession under a grand palace gateway, alongside an embossed program layout with Lord Ganesha's auspicious blessing shloka ('॥ श्री गणेशाय नमः ॥'), gold-foil accented event timelines (Sehra Bandi, Barat, Reception), and a matching floral insert suite.",
+    priceMin: 35,
+    priceMax: 65,
+    currency: "INR",
+    priceUnit: "card (incl. envelope & inserts)",
+    color: "Gold & Ivory",
+    colors: ["Gold", "White", "Blue", "Rose Gold", "Multicolor"],
+    style: "Traditional",
+    material: "350 GSM Heavy Textured Ivory Board with Multi-Level Embossed Metallic Gold Foil, Gloss Varnishing & Ribbon Corner",
+    size: "8 x 10.5 inches (Full luxury presentation suite)",
+    minimumOrderQuantity: 50,
+    customizationAvailable: true,
+    customizationNotes: "Fully customizable with bride & groom names, bilingual Hindi/English invitation text, Ganesha blessings, event timelines, and matching RSVP/Sagan inserts.",
+    tags: ["wedding card", "invitation card", "jharokha", "royal couple", "baggi", "swans", "ganesha", "gold foil", "shahi vivah", "luxury wedding", "bestseller"],
+    isFeatured: true,
+    isBestSeller: true,
+    isAvailable: true,
+    images: [
+      "/images/wedding-cards/royal-jharokha-palace-swans-wedding-card-cover.jpg",
+      "/images/wedding-cards/royal-jharokha-palace-swans-wedding-card-inside.jpg",
+      "/images/wedding-cards/royal-jharokha-palace-swans-wedding-card-insert.jpg"
+    ],
+    thumbnail: "/images/wedding-cards/royal-jharokha-palace-swans-wedding-card-cover.jpg",
+    createdAt: "2026-03-20T10:00:00Z",
+    updatedAt: "2026-03-24T12:00:00Z"
+  },
   {
     id: "SL-032",
     name: "Stained Glass Floral Garland & Golden Frame Designer Lifafa",
