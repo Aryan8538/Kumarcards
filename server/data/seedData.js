@@ -31,7 +31,7 @@ export const CATEGORIES = [
     slug: "wedding-cards",
     description: "Bespoke wedding invitation cards, laser cut cards, luxury suites, and royal marriage stationery.",
     image: "/images/wedding-cards/royal-jharokha-palace-swans-wedding-card-cover.jpg",
-    productCount: 3,
+    productCount: 4,
     isActive: true
   }
 ];
@@ -131,6 +131,37 @@ export const PRODUCTS = [
     ],
     thumbnail: "/images/wedding-cards/royal-rajwada-palace-jharokha-wedding-card-cover.jpg",
     createdAt: "2026-03-22T10:00:00Z",
+    updatedAt: "2026-03-24T12:00:00Z"
+  },
+  {
+    id: "WC-004",
+    name: "Royal Pichwai Kamadhenu & Peacock Palace Wedding Card",
+    slug: "royal-pichwai-kamadhenu-peacock-palace-wedding-card-wc004",
+    productType: "Wedding Card",
+    categoryId: "wedding-cards",
+    description: "Regal Rajasthani Pichwai-themed luxury wedding invitation suite celebrating sacred traditions and royal heritage. The front jacket showcases an architectural palace arch crowned with laser-cut floral jaali fretwork and shimmering gold foil borders. Flanking the regal arch are twin dancing peacocks with emerald-feathered plumage perched atop fluted palace pillars, guarding a personalized oval couple nameplate ('Vedika Weds Naksh') enclosed in an intricate silver-floral filigree frame. At the base, revered Kamadhenu sacred cows with auspicious red terracotta handprints and golden neckbells gaze in reverence against a serene peacock-blue palace courtyard.\n\nInside, the card unfolds to a majestic illustration of a golden ceremonial carriage (Shahi Baggi) drawn by twin white royal stallions under a grand palace gate, accompanied by Lord Ganesha's sacred prayer ('विघ्न हरण मंगल करन, गणनायक महाराज। प्रथम निमंत्रण आपको, पूर्ण करियो काज ॥'), bilingual event timeline ('Golden Moments' for Sehra Bandi, Barat & Reception), and a satin ribbon corner holder for wedding inserts.",
+    priceMin: 20,
+    priceMax: 40,
+    currency: "INR",
+    priceUnit: "piece",
+    color: "Rose Gold, Teal & Pichwai Colors",
+    colors: ["Rose Gold", "Gold", "Ivory", "Peacock Blue", "Multicolor"],
+    style: "Royal Pichwai",
+    material: "350 GSM Textured Metallic Pearl Board with Multi-Level Embossed Gold Foil, Laser-Cut Floral Jaali & Authentic Pichwai Folk Art Detailing",
+    size: "8.5 x 11 inches (Luxury presentation suite with envelope & inserts)",
+    minimumOrderQuantity: 50,
+    customizationAvailable: true,
+    customizationNotes: "Personalized bride & groom name engraving, bilingual Hindi/English invitation text, Ganesha blessings, customized event schedule cards, and venue directions.",
+    tags: ["wedding card", "invitation card", "pichwai", "kamadhenu", "sacred cow", "peacock", "jharokha", "shahi baggi", "gold foil", "shahi vivah", "royal wedding"],
+    isFeatured: true,
+    isBestSeller: false,
+    isAvailable: true,
+    images: [
+      "/images/wedding-cards/pichwai-sacred-cows-peacock-wedding-card-cover.jpg",
+      "/images/wedding-cards/pichwai-sacred-cows-peacock-wedding-card-inside.jpg"
+    ],
+    thumbnail: "/images/wedding-cards/pichwai-sacred-cows-peacock-wedding-card-cover.jpg",
+    createdAt: "2026-03-23T10:00:00Z",
     updatedAt: "2026-03-24T12:00:00Z"
   },
   {
