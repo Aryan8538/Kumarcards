@@ -31,7 +31,7 @@ export const CATEGORIES = [
     slug: "wedding-cards",
     description: "Bespoke wedding invitation cards, laser cut cards, luxury suites, and royal marriage stationery.",
     image: "/images/wedding-cards/royal-jharokha-palace-swans-wedding-card-cover.jpg",
-    productCount: 1,
+    productCount: 2,
     isActive: true
   }
 ];
@@ -56,9 +56,9 @@ export const PRODUCTS = [
     minimumOrderQuantity: 50,
     customizationAvailable: true,
     customizationNotes: "Fully customizable with bride & groom names, bilingual Hindi/English invitation text, Ganesha blessings, event timelines, and matching RSVP/Sagan inserts.",
-    tags: ["wedding card", "invitation card", "jharokha", "royal couple", "baggi", "swans", "ganesha", "gold foil", "shahi vivah", "luxury wedding", "bestseller"],
+    tags: ["wedding card", "invitation card", "jharokha", "royal couple", "baggi", "swans", "ganesha", "gold foil", "shahi vivah", "luxury wedding"],
     isFeatured: true,
-    isBestSeller: true,
+    isBestSeller: false,
     isAvailable: true,
     images: [
       "/images/wedding-cards/royal-jharokha-palace-swans-wedding-card-cover.jpg",
@@ -67,6 +67,37 @@ export const PRODUCTS = [
     ],
     thumbnail: "/images/wedding-cards/royal-jharokha-palace-swans-wedding-card-cover.jpg",
     createdAt: "2026-03-20T10:00:00Z",
+    updatedAt: "2026-03-24T12:00:00Z"
+  },
+  {
+    id: "WC-002",
+    name: "Golden Love Tree & Silhouette Floral Bespoke Wedding Card",
+    slug: "golden-love-tree-silhouette-floral-wedding-card-wc002",
+    productType: "Wedding Card",
+    categoryId: "wedding-cards",
+    description: "Elegant contemporary Indian wedding invitation card adorned with delicate pastel watercolor floral borders and gleaming gold foil outlines. The front cover showcases an ornate carved golden medallion with 3D embossed rose accents, a personalized guest nameplate window, and hanging temple bell motifs with an auspicious couple silhouette wreath.\n\nInside, the card reveals a romantic heart-shaped Kalpavriksha (Tree of Life) with the couple's monogram and a silhouette of the bride and groom holding hands beneath cascading golden chimes, accompanied by Lord Ganesha's auspicious blessing shloka ('|| Shri Ganeshay Namah ||'), bilingual invitation wording, and an embossed golden pocket insert holder.",
+    priceMin: 30,
+    priceMax: 55,
+    currency: "INR",
+    priceUnit: "card (incl. envelope & inserts)",
+    color: "Ivory & Pastel Floral",
+    colors: ["Ivory", "Gold", "Pink", "Yellow", "Multicolor"],
+    style: "Modern",
+    material: "320 GSM Premium Metallic Luster Board with Embossed Gold Foil, Die-Cut Window & Pastel Floral Print",
+    size: "8 x 10 inches (Folded luxury presentation suite)",
+    minimumOrderQuantity: 50,
+    customizationAvailable: true,
+    customizationNotes: "Custom bride & groom names, monogram tree initial engraving, customized Hindi/English family invitation text, and personalized guest name printing.",
+    tags: ["wedding card", "invitation card", "love tree", "couple silhouette", "temple bells", "gold foil", "pastel floral", "ganesha", "modern wedding", "marriage card"],
+    isFeatured: true,
+    isBestSeller: false,
+    isAvailable: true,
+    images: [
+      "/images/wedding-cards/golden-tree-love-silhouette-wedding-card-cover.jpg",
+      "/images/wedding-cards/golden-tree-love-silhouette-wedding-card-inside.jpg"
+    ],
+    thumbnail: "/images/wedding-cards/golden-tree-love-silhouette-wedding-card-cover.jpg",
+    createdAt: "2026-03-21T10:00:00Z",
     updatedAt: "2026-03-24T12:00:00Z"
   },
   {
