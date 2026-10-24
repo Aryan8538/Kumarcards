@@ -31,7 +31,7 @@ export const CATEGORIES = [
     slug: "wedding-cards",
     description: "Bespoke wedding invitation cards, laser cut cards, luxury suites, and royal marriage stationery.",
     image: "/images/wedding-cards/royal-jharokha-palace-swans-wedding-card-cover.jpg",
-    productCount: 2,
+    productCount: 3,
     isActive: true
   }
 ];
@@ -98,6 +98,39 @@ export const PRODUCTS = [
     ],
     thumbnail: "/images/wedding-cards/golden-tree-love-silhouette-wedding-card-cover.jpg",
     createdAt: "2026-03-21T10:00:00Z",
+    updatedAt: "2026-03-24T12:00:00Z"
+  },
+  {
+    id: "WC-003",
+    name: "Royal Rajwada Palace Jharokha & Grand Baraat Wedding Card",
+    slug: "royal-rajwada-palace-grand-baraat-wedding-card-wc003",
+    productType: "Wedding Card",
+    categoryId: "wedding-cards",
+    description: "Grand royal Indian wedding invitation card suite inspired by historic Rajputana-Mughal palace architecture and traditional Shahi Vivah pageantry. The front jacket features an ornate arched Jharokha balustrade window adorned with a multi-hued pastel rose garland, Cypress tree motifs, royal caparisoned elephants with howdah umbrellas, and a Kalpavriksha (Tree of Life) emblem framed in intricate silver-gold filigree borders.\n\nInside, the suite reveals a magnificent hand-rendered portrait of the royal bride and groom seated regally beneath a sparkling crystal chandelier and floral canopy arch, accompanied by a breathtaking Shahi Baraat royal procession scene depicting horses, dhol players, shehnai musicians, and a majestic golden chariot carrying the couple. Complete with Lord Ganesha's auspicious blessings ('|| Shri Ganeshay Namah ||'), event itinerary cards, and a royal embossed golden insert pocket holder.",
+    priceMin: 35,
+    priceMax: 65,
+    currency: "INR",
+    priceUnit: "card (incl. envelope & inserts)",
+    color: "Ivory, Gold & Pastel Floral",
+    colors: ["Ivory", "Gold", "Royal Brown", "Pastel Floral", "Multicolor"],
+    style: "Royal Rajputana",
+    material: "350 GSM Premium Velvet-Touch Metallic Board with Multi-Level Embossed Gold Foil, Die-Cut Balustrade Window & Fine Miniature Artwork",
+    size: "8.5 x 11 inches (Royal luxury presentation suite)",
+    minimumOrderQuantity: 50,
+    customizationAvailable: true,
+    customizationNotes: "Fully bespoke personalization with bride & groom names, bilingual Hindi/English invitation wording, family details, venue map layout, and personalized guest recipient tags.",
+    tags: ["wedding card", "invitation card", "rajwada", "jharokha", "royal baraat", "chariot", "royal couple", "ganesha", "gold foil", "shahi vivah", "luxury wedding"],
+    isFeatured: true,
+    isBestSeller: false,
+    isAvailable: true,
+    images: [
+      "/images/wedding-cards/royal-rajwada-palace-jharokha-wedding-card-cover.jpg",
+      "/images/wedding-cards/royal-rajwada-palace-jharokha-wedding-card-couple.jpg",
+      "/images/wedding-cards/royal-rajwada-palace-jharokha-wedding-card-baraat.jpg",
+      "/images/wedding-cards/royal-rajwada-palace-jharokha-wedding-card-ceremony.jpg"
+    ],
+    thumbnail: "/images/wedding-cards/royal-rajwada-palace-jharokha-wedding-card-cover.jpg",
+    createdAt: "2026-03-22T10:00:00Z",
     updatedAt: "2026-03-24T12:00:00Z"
   },
   {
