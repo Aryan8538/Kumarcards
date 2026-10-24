@@ -328,7 +328,7 @@ export default function BrandIntro({ onComplete, isForced = false }) {
                 }`}
               >
                 {/* Primary Offering Line */}
-                <div className="text-[11px] sm:text-xs font-semibold text-crimson-950 tracking-wide text-center leading-tight">
+                <div className="text-[11px] sm:text-xs font-bold text-gold-700 tracking-wide text-center leading-tight">
                   {INTRO_CONFIG.offeringsLine1}
                 </div>
 
