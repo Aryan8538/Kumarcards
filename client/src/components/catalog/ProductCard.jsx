@@ -86,10 +86,10 @@ export default function ProductCard({ product }) {
         <div className="mt-3 pt-2.5 border-t border-cream-100 flex items-center justify-between gap-2">
           <div>
             <div className="text-xs sm:text-sm font-bold text-crimson-800">
-              ₹{product.priceMin} – ₹{product.priceMax}
+              ₹{product.priceMin === product.priceMax ? product.priceMin : `${product.priceMin} – ₹${product.priceMax}`}
             </div>
-            <span className="text-[10px] text-ink-400 font-medium block">
-              / {product.priceUnit}
+            <span className="text-[10px] text-ink-500 font-medium block">
+              / {product.priceUnit || 'pack of 10'}
             </span>
           </div>
 

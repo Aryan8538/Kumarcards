@@ -162,21 +162,24 @@ export default function ProductDetailPage() {
               </h1>
 
               {/* Price Display */}
-              <div className="mt-4 p-4 rounded-2xl bg-white border border-cream-200/90 shadow-sm flex items-center justify-between">
+              <div className="mt-4 p-4 rounded-2xl bg-white border border-cream-200/90 shadow-sm flex items-center justify-between flex-wrap gap-3">
                 <div>
                   <p className="text-[11px] font-semibold text-ink-400 uppercase tracking-wider">
-                    Showroom Estimate Price
+                    Showroom Price
                   </p>
-                  <div className="text-xl sm:text-2xl font-extrabold text-crimson-800 mt-0.5">
-                    ₹{product.priceMin} – ₹{product.priceMax}
-                    <span className="text-xs font-medium text-ink-500 ml-1.5">
-                      / {product.priceUnit}
+                  <div className="text-2xl sm:text-3xl font-extrabold text-crimson-800 mt-0.5 flex items-baseline gap-2">
+                    ₹{product.priceMin === product.priceMax ? product.priceMin : `${product.priceMin} – ₹${product.priceMax}`}
+                    <span className="text-xs sm:text-sm font-medium text-ink-600">
+                      / 1 packet
                     </span>
                   </div>
+                  <p className="text-xs text-ink-500 mt-1 font-medium">
+                    📦 1 Packet contains <strong className="text-ink-800 font-semibold">10 pieces</strong> (₹{(product.priceMin / 10).toFixed(0)} / piece)
+                  </p>
                 </div>
                 <div className="text-right">
-                  <span className="text-[11px] font-semibold text-gold-700 bg-gold-50 border border-gold-200 px-2.5 py-1 rounded-full">
-                    Bulk discount on MOQ
+                  <span className="text-xs font-semibold text-gold-800 bg-gold-50 border border-gold-300 px-3 py-1.5 rounded-full inline-flex items-center gap-1">
+                    Pack of 10 Pieces
                   </span>
                 </div>
               </div>

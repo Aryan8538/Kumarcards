@@ -30,8 +30,14 @@ export default function ProductSpecs({ product }) {
       icon: Palette
     },
     {
+      label: 'Packaging & Pack Size',
+      value: product.packageDetails || '1 Packet (10 Pieces)',
+      icon: PackageCheck,
+      highlight: true
+    },
+    {
       label: 'Minimum Order Quantity',
-      value: `${product.minimumOrderQuantity} pieces`,
+      value: '1 Packet (10 pieces)',
       icon: PackageCheck
     }
   ];
