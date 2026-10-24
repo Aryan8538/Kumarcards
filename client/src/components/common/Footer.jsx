@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Phone, MessageCircle, Clock, ExternalLink } from 'lucide-react';
+import { MapPin, Phone, MessageCircle, Clock, ExternalLink, Mail } from 'lucide-react';
 import { BUSINESS_CONFIG } from '../../config/business';
 
 export default function Footer() {
@@ -105,6 +105,16 @@ export default function Footer() {
                     </a>
                   </div>
                 </div>
+              </div>
+              <div className="flex items-center gap-2 pt-0.5">
+                <Mail className="w-4 h-4 text-gold-400 shrink-0" />
+                <a
+                  href={`mailto:${BUSINESS_CONFIG.email}`}
+                  className="hover:text-gold-300 font-medium text-cream-200 underline underline-offset-2 break-all text-xs sm:text-sm"
+                  title="Send email inquiry"
+                >
+                  {BUSINESS_CONFIG.email}
+                </a>
               </div>
             </div>
 

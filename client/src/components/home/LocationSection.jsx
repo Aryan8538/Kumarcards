@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Phone, MessageCircle, Clock, ExternalLink } from 'lucide-react';
+import { MapPin, Phone, MessageCircle, Clock, ExternalLink, Mail } from 'lucide-react';
 import { BUSINESS_CONFIG } from '../../config/business';
 
 export default function LocationSection() {
@@ -48,13 +48,13 @@ export default function LocationSection() {
               {/* Contact Options */}
               <div className="space-y-1.5 pt-1">
                 <p className="text-xs font-semibold text-ink-700">For detail enquiry contact:</p>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                   <a
                     href={`tel:${BUSINESS_CONFIG.phoneRaw}`}
                     className="p-3 bg-white rounded-xl border border-cream-200 hover:border-crimson-700 flex items-center gap-2.5 transition-colors"
                   >
-                    <Phone className="w-4 h-4 text-crimson-800" />
-                    <div>
+                    <Phone className="w-4 h-4 text-crimson-800 shrink-0" />
+                    <div className="min-w-0">
                       <p className="text-[11px] text-ink-400 uppercase font-semibold">Primary Contact</p>
                       <p className="font-bold text-ink-900 text-xs truncate">{BUSINESS_CONFIG.primaryPhoneNum}</p>
                     </div>
@@ -64,8 +64,8 @@ export default function LocationSection() {
                     href={`tel:${BUSINESS_CONFIG.phoneSecondaryRaw}`}
                     className="p-3 bg-white rounded-xl border border-cream-200 hover:border-crimson-700 flex items-center gap-2.5 transition-colors"
                   >
-                    <Phone className="w-4 h-4 text-crimson-800" />
-                    <div>
+                    <Phone className="w-4 h-4 text-crimson-800 shrink-0" />
+                    <div className="min-w-0">
                       <p className="text-[11px] text-ink-400 uppercase font-semibold">Alternate Contact</p>
                       <p className="font-bold text-ink-900 text-xs truncate">{BUSINESS_CONFIG.secondaryPhoneNum}</p>
                     </div>
@@ -77,10 +77,22 @@ export default function LocationSection() {
                     rel="noopener noreferrer"
                     className="p-3 bg-white rounded-xl border border-cream-200 hover:border-whatsapp flex items-center gap-2.5 transition-colors"
                   >
-                    <MessageCircle className="w-4 h-4 text-whatsapp fill-whatsapp" />
-                    <div>
+                    <MessageCircle className="w-4 h-4 text-whatsapp fill-whatsapp shrink-0" />
+                    <div className="min-w-0">
                       <p className="text-[11px] text-ink-400 uppercase font-semibold">WhatsApp</p>
                       <p className="font-bold text-ink-900 text-xs">Chat with Staff</p>
+                    </div>
+                  </a>
+
+                  <a
+                    href={`mailto:${BUSINESS_CONFIG.email}`}
+                    className="p-3 bg-white rounded-xl border border-cream-200 hover:border-crimson-700 flex items-center gap-2.5 transition-colors"
+                    title="Send Email"
+                  >
+                    <Mail className="w-4 h-4 text-gold-600 shrink-0" />
+                    <div className="min-w-0">
+                      <p className="text-[11px] text-ink-400 uppercase font-semibold">Email Enquiries</p>
+                      <p className="font-bold text-ink-900 text-xs truncate">{BUSINESS_CONFIG.email}</p>
                     </div>
                   </a>
                 </div>

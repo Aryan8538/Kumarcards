@@ -25,7 +25,7 @@ export const BUSINESS_CONFIG = {
     { display: "+91 92594 41370", raw: "+919259441370", simple: "9259441370" }
   ],
   whatsapp: "919358206242",
-  email: "orders@kumarprintersandcards.example.com",
+  email: "kumarprintershpr@gmail.com",
   
   // Store physical location
   address: {
