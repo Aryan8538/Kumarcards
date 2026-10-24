@@ -43,18 +43,13 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/catalog?category=gift-envelopes" className="hover:text-gold-300 transition-colors">
-                  Gift Envelopes
-                </Link>
-              </li>
-              <li>
                 <Link to="/catalog?category=wedding-cards" className="hover:text-gold-300 transition-colors">
                   Wedding Cards
                 </Link>
               </li>
               <li>
-                <Link to="/catalog?category=invitation-cards" className="hover:text-gold-300 transition-colors">
-                  Invitation Cards
+                <Link to="/catalog" className="hover:text-gold-300 transition-colors">
+                  All Showroom Products
                 </Link>
               </li>
             </ul>

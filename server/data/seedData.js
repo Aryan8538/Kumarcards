@@ -13,7 +13,7 @@ export const CATEGORIES = [
     slug: "shagun-lifafe",
     description: "Traditional auspicious cash gift envelopes with sacred emblems, foil borders, and auspicious motifs for blessings.",
     image: "/images/lifafe/royal-elephant-crimson-mandap-lifafa.jpg",
-    productCount: 11,
+    productCount: 12,
     isActive: true
   },
   {
@@ -26,12 +26,12 @@ export const CATEGORIES = [
     isActive: true
   },
   {
-    id: "gift-envelopes",
-    name: "Gift Envelopes",
-    slug: "gift-envelopes",
-    description: "Multipurpose colorful gifting envelopes suitable for birthdays, corporate gifting, anniversaries, and Diwali tokens.",
-    image: "/images/lifafe/vibrant-tree-of-life-kalpavriksha-lifafa.jpg",
-    productCount: 1,
+    id: "wedding-cards",
+    name: "Wedding Cards",
+    slug: "wedding-cards",
+    description: "Bespoke wedding invitation cards, laser cut cards, luxury suites, and royal marriage stationery.",
+    image: "/images/lifafe/royal-shahi-chhatri-umbrellas-lifafa.jpg",
+    productCount: 0,
     isActive: true
   }
 ];
@@ -692,10 +692,10 @@ export const PRODUCTS = [
   },
   {
     id: "GE-021",
-    name: "Vibrant Kalpavriksha Tree of Life Gift Envelope",
-    slug: "vibrant-kalpavriksha-tree-of-life-gift-envelope-ge021",
-    productType: "Gift Envelope",
-    categoryId: "gift-envelopes",
+    name: "Vibrant Kalpavriksha Tree of Life Shagun Lifafa",
+    slug: "vibrant-kalpavriksha-tree-of-life-shagun-lifafa-ge021",
+    productType: "Lifafa",
+    categoryId: "shagun-lifafe",
     description: "Artistic celebratory cash envelope set on an embossed white woven basketweave background. Features a radiant Kalpavriksha (Sacred Tree of Life) with golden trunk and multi-colored jewel-tone leaves in ruby, sapphire, emerald, and amber hues, symbolizing eternal prosperity and blessings.",
     priceMin: 16,
     priceMax: 25,
@@ -713,7 +713,7 @@ export const PRODUCTS = [
     minimumOrderQuantity: 20,
     customizationAvailable: true,
     customizationNotes: "Available in single presentation packs and assorted bulk sets.",
-    tags: ["tree of life", "kalpavriksha", "multicolor", "gift envelope", "basketweave", "auspicious", "diwali", "wedding"],
+    tags: ["tree of life", "kalpavriksha", "multicolor", "shagun lifafe", "basketweave", "auspicious", "wedding", "lifafa"],
     isFeatured: true,
     isAvailable: true,
     createdAt: "2026-01-15T11:00:00Z",
@@ -844,7 +844,7 @@ export const FILTER_METADATA = {
     { id: "all", name: "All Products" },
     { id: "shagun-lifafe", name: "Shagun Lifafe" },
     { id: "designer-lifafe", name: "Designer Lifafe" },
-    { id: "gift-envelopes", name: "Gift Envelopes" }
+    { id: "wedding-cards", name: "Wedding Cards" }
   ],
   priceRanges: [
     { label: "All Prices", min: 0, max: 9999 },
