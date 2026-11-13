@@ -200,3 +200,44 @@
   animation: pulseGoldGlow 3s ease-in-out infinite;
 }
 
+/* Dynamic Floating Cards Keyframes for Scatter Showcase */
+@keyframes floatCardA {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(0.8deg);
+  }
+}
+
+@keyframes floatCardB {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(5px) rotate(-0.8deg);
+  }
+}
+
+@keyframes floatCardC {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-4px) rotate(-0.6deg);
+  }
+}
+
+.animate-float-card-a {
+  animation: floatCardA 3.8s ease-in-out infinite;
+}
+
+.animate-float-card-b {
+  animation: floatCardB 4.4s ease-in-out infinite;
+}
+
+.animate-float-card-c {
+  animation: floatCardC 3.4s ease-in-out infinite;
+}
+
+
