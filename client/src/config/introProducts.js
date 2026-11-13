@@ -37,14 +37,13 @@ export const INTRO_CONFIG = {
     totalDuration: 6200,     // Total duration ~6.2s
   },
 
-  // Handpicked list of 4–6 featured product IDs appearing in the opening animation.
+  // Handpicked list of 4 featured product IDs appearing in the opening animation (4 corners/flanks).
   // Edit this list to change which products appear and their order without touching animation code!
   featuredProductIds: [
-    "SL-001", // Royal Crimson Mandap Elephant Shagun Lifafa
-    "SL-002", // Royal Twin Peacock Turquoise Shagun Lifafa
-    "SL-006", // Graceful Ivory Peacock Feather Plume Shagun Lifafa
-    "SL-018", // Grand Royal Mandap Elephant & Peacock Shagun Lifafa
-    "GE-021", // Vibrant Kalpavriksha Tree of Life Shagun Lifafa
+    "SL-001", // Royal Crimson Mandap Elephant Shagun Lifafa (Top-Left)
+    "SL-002", // Royal Twin Peacock Turquoise Shagun Lifafa (Bottom-Left)
+    "SL-006", // Graceful Ivory Peacock Feather Plume Shagun Lifafa (Top-Right)
+    "SL-018", // Grand Royal Mandap Elephant & Peacock Shagun Lifafa (Bottom-Right)
   ],
 
   // Editorial subtitles / craftsmanship badges for each featured product in intro
