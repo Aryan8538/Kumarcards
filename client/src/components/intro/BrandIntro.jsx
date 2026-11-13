@@ -4,60 +4,90 @@ import { ChevronRight, Sparkles } from 'lucide-react';
 import { INTRO_CONFIG, resolveIntroProducts } from '../../config/introProducts';
 
 /**
- * BrandIntro - Spacious & Balanced Lifafa Reveal for Kumar Cards.
+ * BrandIntro - Mobile-First Sequential 3-Phase Lifafa Reveal for Kumar Cards.
  * 
  * Concept:
- * A premium Indian wedding shagun lifafa (envelope) appears and opens in 3D.
- * 1. The original ivory KUMAR CARDS invitation card rises straight upward, anchored
- *    prominently in the center at z-35, 100% visible and unobstructed from top to bottom.
- * 2. Simultaneously, exactly 4 handpicked product cards burst dynamically out of the envelope
- *    and scatter to the 4 corners/flanks (Top-Left, Bottom-Left, Top-Right, Bottom-Right).
- * 3. Expansive vertical clearance on mobile: The envelope base glides downward while the central
- *    card rises upward, providing generous breathing room for typography and imagery.
- * 4. At the end of the showcase, the cards smoothly draw inward / fade away before transitioning
- *    into the interactive homepage.
+ * A sequential, cinematic opening of a royal Indian wedding shagun lifafa:
+ * 
+ * PHASE 1 — Envelope Opening & Brand Reveal (0.0s – 4.2s)
+ * - Closed burgundy lifafa appears with royal gold seal.
+ * - Top flap folds open in 3D, and golden inner light blossoms.
+ * - The original ivory KUMAR CARDS invitation note rises completely out of the envelope.
+ * - Entire note is 100% visible, centered, and readable (monogram, title, offerings, tagline).
+ * - Flap is pushed into negative 3D depth and stays behind the envelope, never covering the note.
+ * - Generous hold for brand appreciation.
+ * 
+ * PHASE 2 — Featured Product Cards Reveal (4.2s – 7.2s)
+ * - ONLY AFTER the brand note is fully appreciated, Phase 2 begins.
+ * - The 5 handpicked product cards emerge from inside the envelope ONE BY ONE (200ms stagger).
+ * - Full-screen non-overlapping constellation (X / Quincunx pattern on mobile portrait).
+ * - Every single card is 100% visible with genuine photographs, gold matting, and prices.
+ * - Zero overlap, zero clipping, smooth zero-gravity floating sway.
+ * 
+ * PHASE 3 — Homepage Transition (7.2s – 8.0s)
+ * - Cards smoothly converge and fade away into the interactive showroom homepage.
  */
 
-// Symmetrical 4-corner / 4-flank scatter slots calibrated for generous spacing on all screen sizes
-const FOUR_CARD_SLOTS = {
+// 5-card non-overlapping slots calibrated for full-screen display across mobile, tablet, and desktop
+const FIVE_CARD_SLOTS = {
   desktop: [
-    // 0: Top-Left
-    { dir: 'top-left', x: -320, y: -215, rot: -8, scale: 0.96, delay: 0, zIndex: 22, floatClass: 'animate-float-card-a' },
-    // 1: Bottom-Left
-    { dir: 'bottom-left', x: -320, y: 30, rot: -4, scale: 1.02, delay: 80, zIndex: 24, floatClass: 'animate-float-card-b' },
-    // 2: Top-Right
-    { dir: 'top-right', x: 320, y: -215, rot: 8, scale: 0.96, delay: 40, zIndex: 22, floatClass: 'animate-float-card-c' },
-    // 3: Bottom-Right
-    { dir: 'bottom-right', x: 320, y: 30, rot: 4, scale: 1.02, delay: 120, zIndex: 24, floatClass: 'animate-float-card-a' },
+    // 0: Far-Left
+    { dir: 'far-left', x: -430, y: -50, rot: -8, scale: 1.0, delay: 0, zIndex: 22, floatClass: 'animate-float-card-a' },
+    // 1: Mid-Left (lower)
+    { dir: 'mid-left', x: -280, y: 90, rot: -4, scale: 1.04, delay: 200, zIndex: 25, floatClass: 'animate-float-card-b' },
+    // 2: Center-Top
+    { dir: 'center-top', x: 0, y: -160, rot: 0, scale: 1.02, delay: 400, zIndex: 24, floatClass: 'animate-float-card-c' },
+    // 3: Mid-Right (lower)
+    { dir: 'mid-right', x: 280, y: 90, rot: 4, scale: 1.04, delay: 600, zIndex: 25, floatClass: 'animate-float-card-b' },
+    // 4: Far-Right
+    { dir: 'far-right', x: 430, y: -50, rot: 8, scale: 1.0, delay: 800, zIndex: 22, floatClass: 'animate-float-card-a' },
   ],
   tablet: [
-    { dir: 'top-left', x: -255, y: -180, rot: -7, scale: 0.92, delay: 0, zIndex: 22, floatClass: 'animate-float-card-a' },
-    { dir: 'bottom-left', x: -255, y: 35, rot: -4, scale: 0.98, delay: 80, zIndex: 24, floatClass: 'animate-float-card-b' },
-    { dir: 'top-right', x: 255, y: -180, rot: 7, scale: 0.92, delay: 40, zIndex: 22, floatClass: 'animate-float-card-c' },
-    { dir: 'bottom-right', x: 255, y: 35, rot: 4, scale: 0.98, delay: 120, zIndex: 24, floatClass: 'animate-float-card-a' },
+    // 0: Top-Left
+    { dir: 'top-left', x: -270, y: -130, rot: -7, scale: 0.92, delay: 0, zIndex: 22, floatClass: 'animate-float-card-a' },
+    // 1: Top-Right
+    { dir: 'top-right', x: 270, y: -130, rot: 7, scale: 0.92, delay: 200, zIndex: 22, floatClass: 'animate-float-card-c' },
+    // 2: Center
+    { dir: 'center', x: 0, y: -20, rot: 0, scale: 0.98, delay: 400, zIndex: 26, floatClass: 'animate-float-card-b' },
+    // 3: Bottom-Left
+    { dir: 'bottom-left', x: -240, y: 100, rot: -4, scale: 0.95, delay: 600, zIndex: 24, floatClass: 'animate-float-card-a' },
+    // 4: Bottom-Right
+    { dir: 'bottom-right', x: 240, y: 100, rot: 4, scale: 0.95, delay: 800, zIndex: 24, floatClass: 'animate-float-card-b' },
   ],
   mobile: [
-    { dir: 'top-left', x: -130, y: -195, rot: -7, scale: 0.85, delay: 0, zIndex: 22, floatClass: 'animate-float-card-a' },
-    { dir: 'bottom-left', x: -130, y: -45, rot: -4, scale: 0.88, delay: 80, zIndex: 24, floatClass: 'animate-float-card-b' },
-    { dir: 'top-right', x: 130, y: -195, rot: 7, scale: 0.85, delay: 40, zIndex: 22, floatClass: 'animate-float-card-c' },
-    { dir: 'bottom-right', x: 130, y: -45, rot: 4, scale: 0.88, delay: 120, zIndex: 24, floatClass: 'animate-float-card-a' },
+    // 0: Top-Left
+    { dir: 'top-left', x: -108, y: -125, rot: -6, scale: 0.88, delay: 0, zIndex: 22, floatClass: 'animate-float-card-a' },
+    // 1: Top-Right
+    { dir: 'top-right', x: 108, y: -125, rot: 6, scale: 0.88, delay: 200, zIndex: 22, floatClass: 'animate-float-card-c' },
+    // 2: Center (prominent 5th card in center arena)
+    { dir: 'center', x: 0, y: -15, rot: 0, scale: 0.95, delay: 400, zIndex: 27, floatClass: 'animate-float-card-b' },
+    // 3: Bottom-Left
+    { dir: 'bottom-left', x: -108, y: 95, rot: -4, scale: 0.88, delay: 600, zIndex: 24, floatClass: 'animate-float-card-a' },
+    // 4: Bottom-Right
+    { dir: 'bottom-right', x: 108, y: 95, rot: 4, scale: 0.88, delay: 800, zIndex: 24, floatClass: 'animate-float-card-b' },
   ],
   smallMobile: [
-    { dir: 'top-left', x: -115, y: -180, rot: -6, scale: 0.80, delay: 0, zIndex: 22, floatClass: 'animate-float-card-a' },
-    { dir: 'bottom-left', x: -115, y: -40, rot: -3, scale: 0.84, delay: 80, zIndex: 24, floatClass: 'animate-float-card-b' },
-    { dir: 'top-right', x: 115, y: -180, rot: 6, scale: 0.80, delay: 40, zIndex: 22, floatClass: 'animate-float-card-c' },
-    { dir: 'bottom-right', x: 115, y: -40, rot: 3, scale: 0.84, delay: 120, zIndex: 24, floatClass: 'animate-float-card-a' },
+    // 0: Top-Left
+    { dir: 'top-left', x: -95, y: -115, rot: -5, scale: 0.82, delay: 0, zIndex: 22, floatClass: 'animate-float-card-a' },
+    // 1: Top-Right
+    { dir: 'top-right', x: 95, y: -115, rot: 5, scale: 0.82, delay: 200, zIndex: 22, floatClass: 'animate-float-card-c' },
+    // 2: Center
+    { dir: 'center', x: 0, y: -15, rot: 0, scale: 0.88, delay: 400, zIndex: 27, floatClass: 'animate-float-card-b' },
+    // 3: Bottom-Left
+    { dir: 'bottom-left', x: -95, y: 90, rot: -3, scale: 0.82, delay: 600, zIndex: 24, floatClass: 'animate-float-card-a' },
+    // 4: Bottom-Right
+    { dir: 'bottom-right', x: 95, y: 90, rot: 3, scale: 0.82, delay: 800, zIndex: 24, floatClass: 'animate-float-card-b' },
   ],
 };
 
 function getSlotConfig(index, isSmallMobile, isMobile, isTablet) {
   const table = isSmallMobile
-    ? FOUR_CARD_SLOTS.smallMobile
+    ? FIVE_CARD_SLOTS.smallMobile
     : isMobile
-    ? FOUR_CARD_SLOTS.mobile
+    ? FIVE_CARD_SLOTS.mobile
     : isTablet
-    ? FOUR_CARD_SLOTS.tablet
-    : FOUR_CARD_SLOTS.desktop;
+    ? FIVE_CARD_SLOTS.tablet
+    : FIVE_CARD_SLOTS.desktop;
 
   return table[index % table.length];
 }
@@ -65,7 +95,14 @@ function getSlotConfig(index, isSmallMobile, isMobile, isTablet) {
 export default function BrandIntro({ onComplete, isForced = false, products: propProducts = [] }) {
   const navigate = useNavigate();
 
-  // Animation stage: 1 (Sealed) | 2 (Flap Opening) | 3 (Burst & Rise) | 4 (Typography Reveal) | 5 (Appreciation Hold) | 6 (Dissolve)
+  // Animation stages:
+  // 1: Sealed lifafa entrance (0.0s - 0.6s)
+  // 2: Flap folds open in 3D (0.6s - 1.6s)
+  // 3: Brand note rises out of lifafa (1.6s - 2.8s)
+  // 4: Phase 1: Brand appreciation hold (2.8s - 4.2s)
+  // 5: Phase 2: 5 product cards emerge one by one (4.2s - 5.6s)
+  // 6: Full showcase appreciation hold (5.6s - 7.2s)
+  // 7: Phase 3: Transition & dissolve into homepage (7.2s - 8.0s)
   const [stage, setStage] = useState(1);
   const [isOverlayFading, setIsOverlayFading] = useState(false);
   const timeoutIdsRef = useRef([]);
@@ -83,8 +120,8 @@ export default function BrandIntro({ onComplete, isForced = false, products: pro
   const isMobile = windowWidth < 640;
   const isTablet = windowWidth >= 640 && windowWidth < 768;
 
-  // Resolve 4 featured products from config
-  const featuredCards = useMemo(() => resolveIntroProducts(propProducts).slice(0, 4), [propProducts]);
+  // Resolve 5 featured products from config
+  const featuredCards = useMemo(() => resolveIntroProducts(propProducts).slice(0, 5), [propProducts]);
 
   const clearAllTimeouts = useCallback(() => {
     timeoutIdsRef.current.forEach((id) => clearTimeout(id));
@@ -153,42 +190,120 @@ export default function BrandIntro({ onComplete, isForced = false, products: pro
     }
   }, [handleSkip, isForced]);
 
-  // Orchestrate the animated lifafa reveal
+  // Orchestrate the sequential 3-phase timeline
   useEffect(() => {
     clearAllTimeouts();
 
-    // Stage 1 -> 2: Flap starts opening (t = 600ms)
-    addTimeout(() => {
-      setStage(2);
-    }, INTRO_CONFIG.timings.lifafaEnter);
+    const t = INTRO_CONFIG.timings;
 
-    // Stage 2 -> 3: Flap open; central card rises and 4 product cards scatter (t = 1500ms)
-    addTimeout(() => {
-      setStage(3);
-    }, INTRO_CONFIG.timings.lifafaEnter + INTRO_CONFIG.timings.flapOpen);
+    // Phase 1b: Flap starts opening (t = 600ms)
+    addTimeout(() => setStage(2), t.lifafaEnter);
 
-    // Stage 3 -> 4: Text reveals on central card; product cards float gently (t = 2800ms)
-    addTimeout(() => {
-      setStage(4);
-    }, INTRO_CONFIG.timings.lifafaEnter + INTRO_CONFIG.timings.flapOpen + INTRO_CONFIG.timings.cardRise);
+    // Phase 1c: Brand note rises out of lifafa (t = 1600ms)
+    addTimeout(() => setStage(3), t.lifafaEnter + t.flapOpen);
 
-    // Stage 4 -> 5: Appreciation hold (t = 4000ms)
-    addTimeout(() => {
-      setStage(5);
-    }, INTRO_CONFIG.timings.lifafaEnter + INTRO_CONFIG.timings.flapOpen + INTRO_CONFIG.timings.cardRise + INTRO_CONFIG.timings.textReveal);
+    // Phase 1d: Brand note is fully visible & held for appreciation (t = 2800ms)
+    addTimeout(() => setStage(4), t.lifafaEnter + t.flapOpen + t.brandNoteRise);
 
-    // Stage 5 -> 6: Convergence & dissolve transition into homepage (t = 6200ms)
+    // Phase 2a: Only AFTER brand note is appreciated, product cards emerge one by one (t = 4200ms)
+    addTimeout(() => setStage(5), t.lifafaEnter + t.flapOpen + t.brandNoteRise + t.brandHold);
+
+    // Phase 2b: All 5 cards floating in full showcase appreciation (t = 5600ms)
+    addTimeout(() => setStage(6), t.lifafaEnter + t.flapOpen + t.brandNoteRise + t.brandHold + t.cardsEmerge);
+
+    // Phase 3: Transition & dissolve into homepage (t = 7200ms)
     addTimeout(() => {
-      setStage(6);
+      setStage(7);
       handleFinish();
-    }, INTRO_CONFIG.timings.totalDuration);
+    }, t.totalDuration);
 
     return () => clearAllTimeouts();
   }, [addTimeout, clearAllTimeouts, handleFinish]);
 
   const isFlapOpen = stage >= 2;
-  const isCardRisen = stage >= 3;
-  const isTextVisible = stage >= 4;
+  const isBrandNoteRisen = stage >= 3;
+  const isBrandHold = stage >= 4;
+  const isProductsActive = stage >= 5;
+  const isShowcaseHold = stage >= 6;
+
+  /**
+   * Brand Note Transform across stages:
+   * - Stage 1 & 2: Inside envelope pocket
+   * - Stage 3 & 4 (Phase 1): Center stage, tall, proud, 100% visible
+   * - Stage 5 & 6 (Phase 2): Smoothly scales up to top crown header over the 5-card showcase
+   * - Stage 7 (Phase 3): Dissolves with overlay
+   */
+  const getBrandNoteStyle = () => {
+    if (!isBrandNoteRisen) {
+      return {
+        transform: 'translate3d(-50%, 15px, 0px)',
+        opacity: 0,
+        zIndex: 15,
+      };
+    }
+
+    if (isOverlayFading) {
+      return {
+        transform: isMobile
+          ? 'translate3d(-50%, -240px, 10px) scale(0.68)'
+          : 'translate3d(-50%, -210px, 10px) scale(0.78)',
+        opacity: 0,
+        zIndex: 15,
+      };
+    }
+
+    if (isProductsActive) {
+      // In Phase 2: Ascends gently to crown the 5-card showcase as the royal brand header
+      return {
+        transform: isMobile
+          ? 'translate3d(-50%, -240px, 20px) scale(0.74)'
+          : 'translate3d(-50%, -205px, 20px) scale(0.85)',
+        opacity: 0.9,
+        zIndex: 20,
+      };
+    }
+
+    // In Phase 1: Full-size centered brand spotlight, 100% visible and unencumbered
+    return {
+      transform: isSmallMobile
+        ? 'translate3d(-50%, -190px, 35px) scale(1)'
+        : isMobile
+        ? 'translate3d(-50%, -205px, 35px) scale(1)'
+        : 'translate3d(-50%, -180px, 35px) scale(1)',
+      opacity: 1,
+      zIndex: 35,
+    };
+  };
+
+  /**
+   * Product Card Transform across stages:
+   * - Stage 1 to 4: Hidden inside envelope pocket
+   * - Stage 5 & 6 (Phase 2): Emerge ONE BY ONE into non-overlapping full-screen showcase
+   * - Stage 7 (Phase 3): Smooth convergence toward center
+   */
+  const getCardTransform = (slot, index) => {
+    if (!isProductsActive) {
+      return {
+        transform: 'translate3d(-50%, 25px, 0px) scale(0.35) rotate(0deg)',
+        opacity: 0,
+        pointerEvents: 'none',
+      };
+    }
+
+    if (isOverlayFading) {
+      return {
+        transform: `translate3d(calc(-50% + ${Math.round(slot.x * 0.45)}px), ${Math.round(slot.y * 0.45)}px, 0) scale(${+(slot.scale * 0.7).toFixed(2)}) rotate(${+(slot.rot * 0.4).toFixed(1)}deg)`,
+        opacity: 0,
+        pointerEvents: 'none',
+      };
+    }
+
+    return {
+      transform: `translate3d(calc(-50% + ${slot.x}px), ${slot.y}px, 0) scale(${slot.scale}) rotate(${slot.rot}deg)`,
+      opacity: 1,
+      pointerEvents: 'auto',
+    };
+  };
 
   return (
     <div
@@ -259,13 +374,17 @@ export default function BrandIntro({ onComplete, isForced = false, products: pro
         </button>
       </header>
 
-      {/* MAIN CENTER STAGE: The Animated Lifafa & Rising Branded Cards */}
-      <main className="relative z-30 flex-1 flex flex-col items-center justify-center px-3 pt-12 pb-6 sm:pt-20 sm:pb-12">
+      {/* MAIN CENTER STAGE: The Animated Lifafa, Brand Note & Product Cards */}
+      <main className="relative z-30 flex-1 flex flex-col items-center justify-center px-3 pt-8 pb-4 sm:pt-20 sm:pb-12">
         
         {/* Lifafa Stage Wrapper with 3D Perspective */}
         <div
           className={`relative perspective-1200 w-[275px] xs:w-[300px] sm:w-[400px] md:w-[430px] flex items-center justify-center transition-transform duration-1000 ease-out ${
-            isCardRisen ? 'translate-y-[85px] xs:translate-y-[95px] sm:translate-y-[65px]' : 'translate-y-0'
+            isProductsActive
+              ? 'translate-y-[110px] xs:translate-y-[120px] sm:translate-y-[85px]'
+              : isBrandNoteRisen
+              ? 'translate-y-[85px] xs:translate-y-[95px] sm:translate-y-[65px]'
+              : 'translate-y-0'
           }`}
         >
           {/* Ambient Lighting Cast Beneath the Lifafa */}
@@ -299,41 +418,21 @@ export default function BrandIntro({ onComplete, isForced = false, products: pro
             {/* Interior Radiant Golden Light (blossoms when flap opens) */}
             <div
               className={`absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-20 sm:h-24 rounded-full pointer-events-none transition-opacity duration-1000 ease-out ${
-                isFlapOpen ? 'opacity-80 scale-105' : 'opacity-0 scale-90'
+                isFlapOpen ? 'opacity-85 scale-105' : 'opacity-0 scale-90'
               }`}
               style={{
-                background: 'radial-gradient(ellipse at 50% 20%, rgba(255, 223, 138, 0.6) 0%, rgba(212, 175, 55, 0.3) 45%, transparent 75%)',
+                background: 'radial-gradient(ellipse at 50% 20%, rgba(255, 223, 138, 0.65) 0%, rgba(212, 175, 55, 0.35) 45%, transparent 75%)',
                 filter: 'blur(8px)',
               }}
             />
 
             {/* ===================================================== */}
-            {/* 2. THE 4 BALANCED CORNER PRODUCT CARDS                */}
+            {/* 2. THE 5 FEATURED PRODUCT CARDS (PHASE 2)             */}
+            {/*    Emerge ONE BY ONE into non-overlapping showcase    */}
             {/* ===================================================== */}
             {featuredCards.map((product, index) => {
               const slot = getSlotConfig(index, isSmallMobile, isMobile, isTablet);
-
-              // Calculate dynamic position based on animation phase
-              let cardTransform;
-              let cardOpacity;
-              let isPointerActive;
-
-              if (!isCardRisen) {
-                // Phase 1 & 2: Tucked inside the lifafa pocket
-                cardTransform = 'translate3d(-50%, 25px, 0) scale(0.35) rotate(0deg)';
-                cardOpacity = 0;
-                isPointerActive = false;
-              } else if (isOverlayFading) {
-                // Phase 6: Smoothly bring cards together toward center while fading away
-                cardTransform = `translate3d(calc(-50% + ${Math.round(slot.x * 0.45)}px), ${Math.round(slot.y * 0.45)}px, 0) scale(${+(slot.scale * 0.7).toFixed(2)}) rotate(${+(slot.rot * 0.4).toFixed(1)}deg)`;
-                cardOpacity = 0;
-                isPointerActive = false;
-              } else {
-                // Phase 3, 4, 5: Dispersed in 4 corners around the central card
-                cardTransform = `translate3d(calc(-50% + ${slot.x}px), ${slot.y}px, 0) scale(${slot.scale}) rotate(${slot.rot}deg)`;
-                cardOpacity = 1;
-                isPointerActive = true;
-              }
+              const cardTransformStyle = getCardTransform(slot, index);
 
               return (
                 <div
@@ -344,26 +443,26 @@ export default function BrandIntro({ onComplete, isForced = false, products: pro
                   aria-label={`View ${product.name}`}
                   className="absolute top-3 left-1/2 w-[76px] h-[108px] xs:w-[84px] xs:h-[118px] sm:w-[145px] sm:h-[205px] md:w-[165px] md:h-[235px] cursor-pointer group select-none outline-none focus-visible:ring-2 focus-visible:ring-gold-400"
                   style={{
-                    transform: cardTransform,
-                    opacity: cardOpacity,
-                    pointerEvents: isPointerActive ? 'auto' : 'none',
+                    ...cardTransformStyle,
                     zIndex: slot.zIndex,
                     transition: isOverlayFading
                       ? 'transform 650ms cubic-bezier(0.4, 0, 0.2, 1), opacity 550ms ease-out'
-                      : `transform 1200ms cubic-bezier(0.16, 1, 0.3, 1) ${slot.delay}ms, opacity 850ms ease-out ${slot.delay}ms`,
+                      : isProductsActive
+                      ? `transform 1100ms cubic-bezier(0.16, 1, 0.3, 1) ${slot.delay}ms, opacity 800ms ease-out ${slot.delay}ms`
+                      : 'none',
                   }}
                   title={product.name}
                 >
                   {/* Inner floating container for organic multi-directional sway */}
                   <div
                     className={`w-full h-full rounded-lg sm:rounded-2xl p-1 sm:p-1.5 transition-transform duration-300 group-hover:scale-105 ${
-                      isTextVisible && !isOverlayFading ? slot.floatClass : ''
+                      isShowcaseHold && !isOverlayFading ? slot.floatClass : ''
                     }`}
                     style={{
                       background: 'linear-gradient(145deg, #FAF7EE 0%, #F5EDE1 50%, #ECE2D2 100%)',
                       border: '1.5px solid rgba(212, 175, 55, 0.55)',
-                      boxShadow: isCardRisen
-                        ? slot.scale > 1.0
+                      boxShadow: isProductsActive
+                        ? slot.scale > 0.95
                           ? '0 20px 42px -6px rgba(0,0,0,0.7), 0 0 20px rgba(212, 175, 55, 0.28)'
                           : '0 16px 34px -6px rgba(0,0,0,0.65), 0 0 16px rgba(212, 175, 55, 0.22)'
                         : 'none',
@@ -407,28 +506,23 @@ export default function BrandIntro({ onComplete, isForced = false, products: pro
             })}
 
             {/* ===================================================== */}
-            {/* 3. THE RISING ORIGINAL KUMAR CARDS INVITATION CARD    */}
-            {/*    Anchored in the center at z-35 (Always Prominent)  */}
+            {/* 3. THE RISING ORIGINAL KUMAR CARDS BRAND NOTE         */}
+            {/*    PHASE 1: Rises completely out & holds unobstructed */}
+            {/*    PHASE 2: Ascends as regal header over the cards    */}
             {/* ===================================================== */}
             <div
-              className="absolute left-1/2 -translate-x-1/2 z-35 transition-all duration-[1200ms] cubic-bezier(0.22, 1, 0.36, 1) flex flex-col items-center justify-between text-center w-[225px] xs:w-[240px] sm:w-[350px] md:w-[375px]"
+              className="absolute left-1/2 -translate-x-1/2 transition-all duration-[1100ms] cubic-bezier(0.22, 1, 0.36, 1) flex flex-col items-center justify-between text-center w-[250px] xs:w-[270px] sm:w-[350px] md:w-[375px]"
               style={{
                 top: '12px',
-                height: isMobile ? '255px' : '265px',
-                transform: isCardRisen
-                  ? isSmallMobile
-                    ? 'translate3d(-50%, -190px, 35px)'
-                    : isMobile
-                    ? 'translate3d(-50%, -205px, 35px)'
-                    : 'translate3d(-50%, -180px, 35px)'
-                  : 'translate3d(-50%, 15px, 0px)',
+                height: isMobile ? '260px' : '270px',
+                ...getBrandNoteStyle(),
                 background: 'linear-gradient(145deg, #FAF7EE 0%, #F4ECE0 50%, #ECE1D0 100%)',
                 borderRadius: '16px',
-                padding: isMobile ? '10px 11px' : '12px 14px',
-                boxShadow: isCardRisen
+                padding: isMobile ? '11px 12px' : '13px 15px',
+                boxShadow: isBrandNoteRisen
                   ? '0 -15px 35px rgba(0,0,0,0.5), 0 0 25px rgba(212, 175, 55, 0.25)'
                   : 'none',
-                border: '1.5px solid rgba(197, 154, 69, 0.6)',
+                border: '1.5px solid rgba(197, 154, 69, 0.65)',
               }}
             >
               {/* Inner Double Gold Foil Line on Card */}
@@ -447,7 +541,7 @@ export default function BrandIntro({ onComplete, isForced = false, products: pro
                 <div className="relative mb-0.5 sm:mb-1">
                   <svg
                     viewBox="0 0 60 60"
-                    className="w-8 h-8 xs:w-9 xs:h-9 sm:w-11 sm:h-11 drop-shadow-sm"
+                    className="w-9 h-9 xs:w-10 xs:h-10 sm:w-11 sm:h-11 drop-shadow-sm"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                   >
@@ -484,46 +578,46 @@ export default function BrandIntro({ onComplete, isForced = false, products: pro
                 </div>
 
                 {/* Brand Name Title */}
-                <h1 className="font-display text-base xs:text-lg sm:text-2xl md:text-3xl font-extrabold tracking-[0.18em] sm:tracking-[0.24em] uppercase text-crimson-900 drop-shadow-sm">
+                <h1 className="font-display text-lg xs:text-xl sm:text-2xl md:text-3xl font-extrabold tracking-[0.2em] sm:tracking-[0.24em] uppercase text-crimson-900 drop-shadow-sm">
                   {INTRO_CONFIG.brandName}
                 </h1>
 
                 {/* Subheading under KUMAR CARDS */}
-                <p className="font-serif italic text-[8.5px] xs:text-[9.5px] sm:text-xs font-semibold text-crimson-800 tracking-wide mt-0.5 leading-snug">
+                <p className="font-serif italic text-[9px] xs:text-[10px] sm:text-xs font-semibold text-crimson-800 tracking-wide mt-0.5 leading-snug">
                   {INTRO_CONFIG.subheading}
                 </p>
 
                 {/* Golden Center Flourish Divider */}
-                <div className="flex items-center justify-center gap-1.5 sm:gap-2 w-24 xs:w-28 sm:w-44 my-0.5 sm:my-1">
+                <div className="flex items-center justify-center gap-1.5 sm:gap-2 w-28 xs:w-32 sm:w-44 my-0.5 sm:my-1">
                   <span className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-gold-600/60 to-transparent" />
                   <span className="w-1.5 h-1.5 rotate-45 bg-gold-600" />
                   <span className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-gold-600/60 to-transparent" />
                 </div>
               </div>
 
-              {/* Lower Section: Offerings & Tagline (Smooth Fade-in as Card Rises) */}
+              {/* Lower Section: Offerings & Tagline (100% visible & readable) */}
               <div
                 className={`relative z-10 flex flex-col items-center w-full transition-opacity duration-700 ease-out ${
-                  isTextVisible ? 'opacity-100' : 'opacity-0'
+                  isBrandNoteRisen ? 'opacity-100' : 'opacity-0'
                 }`}
               >
                 {/* Primary Offering Line */}
-                <div className="text-[9.5px] xs:text-[10px] sm:text-xs font-bold text-gold-700 tracking-wide text-center leading-tight">
+                <div className="text-[10px] xs:text-[11px] sm:text-xs font-bold text-gold-700 tracking-wide text-center leading-tight">
                   {INTRO_CONFIG.offeringsLine1}
                 </div>
 
                 {/* Secondary Offering Line */}
-                <div className="text-[8.5px] xs:text-[9px] sm:text-[11px] font-bold text-gold-800 tracking-wider uppercase mt-0.5 sm:mt-1">
+                <div className="text-[9px] xs:text-[10px] sm:text-[11px] font-bold text-gold-800 tracking-wider uppercase mt-0.5 sm:mt-1">
                   {INTRO_CONFIG.offeringsLine2}
                 </div>
 
                 {/* Supporting Tagline */}
-                <p className="font-serif italic text-[8.5px] xs:text-[9.5px] sm:text-xs text-ink-600 tracking-normal mt-1 leading-snug">
+                <p className="font-serif italic text-[9px] xs:text-[10px] sm:text-xs text-ink-600 tracking-normal mt-1 leading-snug">
                   "{INTRO_CONFIG.tagline}"
                 </p>
 
                 {/* Subtle Auspicious Ribbon / Card Base Accent */}
-                <div className="mt-1 sm:mt-2 flex items-center gap-1 text-[8px] xs:text-[9px] uppercase tracking-[0.18em] sm:tracking-[0.2em] text-gold-700/80 font-semibold">
+                <div className="mt-1 sm:mt-2 flex items-center gap-1 text-[8.5px] xs:text-[9.5px] uppercase tracking-[0.18em] sm:tracking-[0.2em] text-gold-700/80 font-semibold">
                   <Sparkles className="w-2.5 h-2.5 text-gold-600" />
                   <span>{INTRO_CONFIG.secondaryCta}</span>
                   <span className="text-gold-600">→</span>
@@ -594,17 +688,18 @@ export default function BrandIntro({ onComplete, isForced = false, products: pro
             </div>
 
             {/* ===================================================== */}
-            {/* 5. THE 3D ROTATING TOP FLAP (Tucked behind at z-6)    */}
+            {/* 5. THE 3D ROTATING TOP FLAP (Tucked behind at z-5)    */}
+            {/*    Pushed back into negative depth, never blocks text */}
             {/* ===================================================== */}
             <div
               className="absolute top-0 inset-x-0 origin-top preserve-3d transition-all duration-[1000ms] ease-in-out"
               style={{
-                height: isMobile ? '80px' : '100px',
+                height: isMobile ? '75px' : '95px',
                 transform: isFlapOpen
-                  ? 'rotateX(180deg) translate3d(0, 0, -40px)'
+                  ? 'rotateX(180deg) translate3d(0, 0, -45px)'
                   : 'rotateX(0deg) translate3d(0, 0, 0px)',
-                zIndex: isFlapOpen ? 6 : 40,
-                opacity: isCardRisen ? 0.35 : 1,
+                zIndex: isFlapOpen ? 5 : 40,
+                opacity: isBrandNoteRisen ? 0.25 : 1,
               }}
             >
               {/* Front Side of Flap (Visible when Closed) */}
@@ -675,15 +770,17 @@ export default function BrandIntro({ onComplete, isForced = false, products: pro
             style={{
               width:
                 stage === 1
-                  ? '15%'
+                  ? '10%'
                   : stage === 2
-                  ? '30%'
+                  ? '25%'
                   : stage === 3
-                  ? '55%'
+                  ? '40%'
                   : stage === 4
-                  ? '75%'
+                  ? '55%'
                   : stage === 5
-                  ? '95%'
+                  ? '75%'
+                  : stage === 6
+                  ? '92%'
                   : '100%',
               transitionDuration:
                 stage === 1
@@ -691,10 +788,14 @@ export default function BrandIntro({ onComplete, isForced = false, products: pro
                   : stage === 2
                   ? '1000ms'
                   : stage === 3
-                  ? '1300ms'
-                  : stage === 4
                   ? '1200ms'
-                  : '2000ms',
+                  : stage === 4
+                  ? '1400ms'
+                  : stage === 5
+                  ? '1400ms'
+                  : stage === 6
+                  ? '1600ms'
+                  : '800ms',
             }}
           />
         </div>

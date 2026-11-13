@@ -8,9 +8,8 @@ import { PRODUCTS } from '../data/seedData.js';
  * 
  * -------------------------------------------------------------
  * HOW TO CONFIGURE FEATURED PRODUCTS:
- * Simply edit the `featuredProductIds` array below with 4 to 6 product IDs
- * (e.g. ['SL-029', 'SL-028', 'WC-001', 'SL-034', 'SL-035']).
- * The animation automatically adjusts its fan layout and symmetry.
+ * Simply edit the `featuredProductIds` array below with your product IDs.
+ * The animation automatically adjusts its layout and symmetry.
  * -------------------------------------------------------------
  */
 
@@ -26,24 +25,26 @@ export const INTRO_CONFIG = {
   heritageBadge: "ESTD. 1998 • HAPUR",
   sessionStorageKey: "kumar_cards_intro_shown",
 
-  // Timing settings (in milliseconds) - calibrated for ~6.2s total experience (within 5–7s target)
+  // Timing settings (in milliseconds) - calibrated for a sequential 3-phase story (~7.4s total, 6-8s range)
   timings: {
-    lifafaEnter: 600,        // 0.0s - 0.6s: Sealed lifafa appears centered with soft ambient lighting
-    flapOpen: 1000,          // 0.6s - 1.6s: Top flap folds open in 3D, golden light radiates from within
-    cardRise: 1400,          // 1.6s - 3.0s: Branded card & selected product cards glide upward and fan out
-    textReveal: 1200,        // 3.0s - 4.2s: Brand typography, offerings, and tagline reveal
-    holdAppreciation: 2000,  // 4.2s - 6.2s: Hold on final composition for appreciation
-    fadeExitDuration: 700,   // 6.2s - 6.9s: Seamless dissolve transition into homepage
-    totalDuration: 6200,     // Total duration ~6.2s
+    lifafaEnter: 600,        // Phase 1a (0.0s - 0.6s): Closed lifafa appears centered
+    flapOpen: 1000,          // Phase 1b (0.6s - 1.6s): Top flap folds open in 3D, golden light radiates
+    brandNoteRise: 1200,     // Phase 1c (1.6s - 2.8s): Ivory brand note rises completely out of envelope
+    brandHold: 1400,         // Phase 1d (2.8s - 4.2s): Brand appreciation hold (unobstructed & readable)
+    cardsEmerge: 1400,       // Phase 2a (4.2s - 5.6s): 5 product cards emerge ONE BY ONE into full-screen showcase
+    showcaseHold: 1600,      // Phase 2b (5.6s - 7.2s): Full-screen collection appreciation hold
+    fadeExitDuration: 800,   // Phase 3  (7.2s - 8.0s): Smooth convergence & dissolve transition into homepage
+    totalDuration: 7400,     // Total duration ~7.4s (well within 6–8s requirement)
   },
 
-  // Handpicked list of 4 featured product IDs appearing in the opening animation (4 corners/flanks).
+  // Handpicked list of 5 featured product IDs appearing in the opening animation.
   // Edit this list to change which products appear and their order without touching animation code!
   featuredProductIds: [
     "SL-001", // Royal Crimson Mandap Elephant Shagun Lifafa (Top-Left)
-    "SL-002", // Royal Twin Peacock Turquoise Shagun Lifafa (Bottom-Left)
-    "SL-006", // Graceful Ivory Peacock Feather Plume Shagun Lifafa (Top-Right)
-    "SL-018", // Grand Royal Mandap Elephant & Peacock Shagun Lifafa (Bottom-Right)
+    "SL-002", // Royal Twin Peacock Turquoise Shagun Lifafa (Top-Right)
+    "SL-006", // Graceful Ivory Peacock Feather Plume Shagun Lifafa (Center)
+    "SL-018", // Grand Royal Mandap Elephant & Peacock Shagun Lifafa (Bottom-Left)
+    "GE-021", // Vibrant Kalpavriksha Tree of Life Shagun Lifafa (Bottom-Right)
   ],
 
   // Editorial subtitles / craftsmanship badges for each featured product in intro
