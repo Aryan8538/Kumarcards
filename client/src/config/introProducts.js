@@ -1,13 +1,17 @@
-import { PRODUCTS } from '../data/seedData';
+import { PRODUCTS } from '../data/seedData.js';
 
 /**
  * FEATURED PRODUCTS INTRO CONFIGURATION
  * 
- * Controls which products appear in the opening cinematic animation,
+ * Controls which products appear in the opening cinematic lifafa animation,
  * their sequence, timings, and custom highlight badges.
  * 
- * Edit this list to easily change which products are spotlighted
- * without touching the animation engine.
+ * -------------------------------------------------------------
+ * HOW TO CONFIGURE FEATURED PRODUCTS:
+ * Simply edit the `featuredProductIds` array below with 4 to 6 product IDs
+ * (e.g. ['SL-029', 'SL-028', 'WC-001', 'SL-034', 'SL-035']).
+ * The animation automatically adjusts its fan layout and symmetry.
+ * -------------------------------------------------------------
  */
 
 export const INTRO_CONFIG = {
@@ -22,30 +26,49 @@ export const INTRO_CONFIG = {
   heritageBadge: "ESTD. 1998 • HAPUR",
   sessionStorageKey: "kumar_cards_intro_shown",
 
-  // Timing settings (in milliseconds) - calibrated for Lifafa Opening + Card Reveal + 3-4s Appreciation Hold
+  // Timing settings (in milliseconds) - calibrated for ~6.2s total experience (within 5–7s target)
   timings: {
-    lifafaEnter: 800,        // 0.0s - 0.8s: Lifafa appears centered with soft ambient lighting
-    flapOpen: 1200,          // 0.8s - 2.0s: Top flap folds open in 3D, golden light radiates
-    cardRise: 1800,          // 2.0s - 3.8s: Branded card glides upward out of the lifafa
-    textReveal: 1600,        // 3.8s - 5.4s: Brand typography, offerings, and tagline reveal
-    holdAppreciation: 2600,  // 5.4s - 8.0s: Generous hold on final composition (+3-4s longer request)
-    fadeExitDuration: 800,   // 8.0s - 8.8s: Seamless dissolve transition into homepage
-    totalDuration: 8000,     // Total duration ~8.0s
+    lifafaEnter: 600,        // 0.0s - 0.6s: Sealed lifafa appears centered with soft ambient lighting
+    flapOpen: 1000,          // 0.6s - 1.6s: Top flap folds open in 3D, golden light radiates from within
+    cardRise: 1400,          // 1.6s - 3.0s: Branded card & selected product cards glide upward and fan out
+    textReveal: 1200,        // 3.0s - 4.2s: Brand typography, offerings, and tagline reveal
+    holdAppreciation: 2000,  // 4.2s - 6.2s: Hold on final composition for appreciation
+    fadeExitDuration: 700,   // 6.2s - 6.9s: Seamless dissolve transition into homepage
+    totalDuration: 6200,     // Total duration ~6.2s
   },
 
-  // Handpicked list of 7 signature products in exact cinematic order
+  // Handpicked list of 4–6 featured product IDs appearing in the opening animation.
+  // Edit this list to change which products appear and their order without touching animation code!
   featuredProductIds: [
-    "SL-029", // Royal Jharokha Palace & Twin Peacocks
-    "SL-028", // Ornate Golden Bansuri & Twin Mor Pankh
-    "SL-034", // Imperial Procession Elephants & Rajput Haveli
-    "SL-035", // Royal Shahi Chhatri & Pearl Tassel Umbrellas
-    "SL-032", // Stained Glass Floral Garland & Golden Frame
-    "SL-030", // Embossed Blush Peony & Ivory Bloom
-    "SL-001", // Royal Crimson Mandap Elephant
+    "SL-001", // Royal Crimson Mandap Elephant Shagun Lifafa
+    "SL-002", // Royal Twin Peacock Turquoise Shagun Lifafa
+    "SL-006", // Graceful Ivory Peacock Feather Plume Shagun Lifafa
+    "SL-018", // Grand Royal Mandap Elephant & Peacock Shagun Lifafa
+    "GE-021", // Vibrant Kalpavriksha Tree of Life Shagun Lifafa
   ],
 
   // Editorial subtitles / craftsmanship badges for each featured product in intro
   productHighlights: {
+    "SL-001": {
+      collection: "Signature Wedding Sagan",
+      subtitle: "Royal Caparisoned Elephants & Mandap Pillars",
+    },
+    "SL-002": {
+      collection: "Royal Peacock Series",
+      subtitle: "Turquoise & Gold Embossed Twin Peacocks",
+    },
+    "SL-006": {
+      collection: "Graceful Plume Series",
+      subtitle: "Graceful Ivory Peacock Feather Plume",
+    },
+    "SL-018": {
+      collection: "Grand Ceremonial Sagan",
+      subtitle: "Grand Royal Mandap Elephant & Peacock",
+    },
+    "GE-021": {
+      collection: "Kalpavriksha Heritage",
+      subtitle: "Vibrant Tree of Life & Auspicious Blessings",
+    },
     "SL-029": {
       collection: "Heritage Palace Series",
       subtitle: "3D Embossed Gold Foil Arches & Royal Peacocks",
@@ -53,6 +76,18 @@ export const INTRO_CONFIG = {
     "SL-028": {
       collection: "Auspicious Devotional",
       subtitle: "Sacred Golden Bansuri & Iridescent Mor Pankh",
+    },
+    "WC-001": {
+      collection: "Bespoke Wedding Cards",
+      subtitle: "Royal Jharokha Palace & Twin Swans Suite",
+    },
+    "WC-002": {
+      collection: "Modern Romance",
+      subtitle: "Golden Love Tree & Silhouette Floral Suite",
+    },
+    "WC-003": {
+      collection: "Rajwada Grandeur",
+      subtitle: "Royal Rajwada Palace Jharokha & Grand Baraat",
     },
     "SL-034": {
       collection: "Rajputana Collection",
@@ -70,12 +105,15 @@ export const INTRO_CONFIG = {
       collection: "Modern Luxury Romance",
       subtitle: "Multi-Level Embossed Blush Peony Blooms",
     },
-    "SL-001": {
-      collection: "Signature Wedding Sagan",
-      subtitle: "Royal Caparisoned Elephants & Mandap Pillars",
-    },
   }
 };
+
+/**
+ * Normalizes SKU IDs for resilient matching (e.g., 'SL 001', 'SL001', 'SL-001' all match)
+ */
+function normalizeId(id) {
+  return String(id || '').toLowerCase().replace(/[\s-_]/g, '');
+}
 
 /**
  * Resolves the full product objects in configured order from catalog products.
@@ -85,30 +123,35 @@ export function resolveIntroProducts(allProducts = []) {
   const listToUse = (allProducts && allProducts.length > 0) ? allProducts : PRODUCTS;
   if (!listToUse || listToUse.length === 0) return [];
 
-  const productMap = new Map(listToUse.map((p) => [p.id, p]));
+  const productMap = new Map();
+  for (const p of listToUse) {
+    productMap.set(p.id, p);
+    productMap.set(normalizeId(p.id), p);
+  }
+
   const resolved = [];
 
-  for (const id of INTRO_CONFIG.featuredProductIds) {
-    const item = productMap.get(id);
+  for (const rawId of INTRO_CONFIG.featuredProductIds) {
+    const item = productMap.get(rawId) || productMap.get(normalizeId(rawId));
     if (item && item.thumbnail) {
-      const extra = INTRO_CONFIG.productHighlights[id] || {};
+      const extra = INTRO_CONFIG.productHighlights?.[item.id] || INTRO_CONFIG.productHighlights?.[rawId] || {};
       resolved.push({
         ...item,
         introCollection: extra.collection || item.productType || "Signature Collection",
-        introSubtitle: extra.subtitle || item.material || item.style,
+        introSubtitle: extra.subtitle || item.name || item.material || item.style,
       });
     }
   }
 
   // Fallback: If configured IDs not found, pick first available bestsellers
   if (resolved.length === 0) {
-    return allProducts
+    return listToUse
       .filter((p) => p.isBestSeller || p.isFeatured)
-      .slice(0, 7)
+      .slice(0, 5)
       .map((item) => ({
         ...item,
         introCollection: item.productType || "Signature Collection",
-        introSubtitle: item.material || item.style,
+        introSubtitle: item.name || item.material || item.style,
       }));
   }
 

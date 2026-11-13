@@ -52,6 +52,7 @@ export default function HomePage() {
     <div className="space-y-0 relative">
       {showIntro && (
         <BrandIntro
+          products={products}
           onComplete={handleCompleteIntro}
           isForced={Boolean(forceIntroParam)}
         />
