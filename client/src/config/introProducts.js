@@ -25,15 +25,16 @@ export const INTRO_CONFIG = {
   heritageBadge: "ESTD. 1998 • HAPUR",
   sessionStorageKey: "kumar_cards_intro_shown",
 
-  // Timing settings (in milliseconds) - calibrated for a sequential 3-phase story (~7.4s total, 6-8s range)
+  // Timing settings (in milliseconds) - calibrated for a strict 3-stage sequence (~7.4s total, 6-8s range)
   timings: {
-    lifafaEnter: 600,        // Phase 1a (0.0s - 0.6s): Closed lifafa appears centered
-    flapOpen: 1000,          // Phase 1b (0.6s - 1.6s): Top flap folds open in 3D, golden light radiates
-    brandNoteRise: 1200,     // Phase 1c (1.6s - 2.8s): Ivory brand note rises completely out of envelope
-    brandHold: 1400,         // Phase 1d (2.8s - 4.2s): Brand appreciation hold (unobstructed & readable)
-    cardsEmerge: 1400,       // Phase 2a (4.2s - 5.6s): 5 product cards emerge ONE BY ONE into full-screen showcase
-    showcaseHold: 1600,      // Phase 2b (5.6s - 7.2s): Full-screen collection appreciation hold
-    fadeExitDuration: 800,   // Phase 3  (7.2s - 8.0s): Smooth convergence & dissolve transition into homepage
+    lifafaEnter: 500,        // Stage 1a (0.0s - 0.5s): Closed lifafa appears centered
+    flapOpen: 700,           // Stage 1b (0.5s - 1.2s): Top flap folds open in 3D
+    brandNoteRise: 1000,     // Stage 1c (1.2s - 2.2s): Ivory brand note rises completely out of envelope
+    brandHold: 1200,         // Stage 1d (2.2s - 3.4s): Brand appreciation hold (unobstructed & readable)
+    envelopeExit: 600,       // Stage 1->2 (3.4s - 4.0s): Envelope moves down out of view, note glides away
+    cardsEmerge: 1200,       // Stage 2a (3.8s - 5.0s): 5 product cards emerge from center with stagger
+    showcaseHold: 1600,      // Stage 2b (5.0s - 6.6s): Full-screen collection appreciation hold
+    fadeExitDuration: 800,   // Stage 3  (6.6s - 7.4s): Smooth convergence & dissolve transition into homepage
     totalDuration: 7400,     // Total duration ~7.4s (well within 6–8s requirement)
   },
 
